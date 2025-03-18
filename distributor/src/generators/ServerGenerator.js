@@ -670,7 +670,12 @@ export default class ServerGenerator extends FunctionGenerator {
                 }
               }
             }
-          } else {
+          } 
+          else {
+            // Its copying some imports that should not be copied, could be a wrong condition or the lack of another condition.
+            if(!sourceElements[i].statement().importStatement()){
+              console.log(sourceElements[i].statement().importStatement())
+            }
             this.visitSourceElement(sourceElements[i].statement());
           }
         }
